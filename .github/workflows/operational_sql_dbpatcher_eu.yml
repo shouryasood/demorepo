@@ -17,8 +17,8 @@ jobs:
     steps:
     - name: Test database connection
       run: |
-        echo "DB tasks to perform"
-        
+        echo "Testing database connection"
+        PGPASSWORD="root" psql -U bob -p 5432 -d dvdrental -h 35.188.139.128 -c "select now();"
 
     # - name: Checkout wfm-sql repo
     #   uses: actions/checkout@v4
