@@ -1,0 +1,31 @@
+name: Operational_sql_dbpatcher_eu
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  container-dbpatcher-job:
+    runs-on: ubuntu-latest
+    container:
+      image: us-docker.pkg.dev/d-ulti-wfm-gcp-auto-257d/pro-wfm-dbpatcher/dbpatcher:1
+
+    steps:
+    - name: Test database connection
+      run: |
+        echo "Testing database connection"
+        PGPASSWORD="my_secure_password" psql -U my_new_user -p 5432 -d my_new_database -h <YOUR_PC_PUBLIC_IP> -c "select now();"
+
+    - name: Checkout wfm-sql repo
+      uses: actions/checkout@v4
+      with:
+        repository: UKGEPIC/wfm-sql
+        ref: 09.07.00
+        token: ${{ secrets.GHA_PAT }}
+        path: './wfm-sql'
+        fetch-depth: 0
+        fetch-tags: 'true'
