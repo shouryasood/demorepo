@@ -18,7 +18,7 @@ jobs:
     - name: Test database connection
       run: |
         echo "Testing database connection"
-        PGPASSWORD="my_secure_password" psql -U my_user -p 5432 -d my_database -h <YOUR_PC_PUBLIC_IP> -c "select now();"
+        PGPASSWORD="my_secure_password" psql -U my_user -p 5432 -d my_database -h 35.188.139.128 -c "select now();"
 
     - name: Checkout wfm-sql repo
       uses: actions/checkout@v4
