@@ -20,12 +20,12 @@ jobs:
         echo "DB tasks to perform"
         
 
-    - name: Checkout wfm-sql repo
-      uses: actions/checkout@v4
-      with:
-        repository: UKGEPIC/wfm-sql
-        ref: 09.07.00
-        token: ${{ secrets.GHA_PAT }}
-        path: './wfm-sql'
-        fetch-depth: 0
-        fetch-tags: 'true'
+    # - name: Checkout wfm-sql repo
+    #   uses: actions/checkout@v4
+    #   with:
+    #     repository: UKGEPIC/wfm-sql
+    #     ref: 09.07.00
+    #     token: ${{ secrets.GHA_PAT }}
+    #     path: './wfm-sql'
+    #     fetch-depth: 0
+    #     fetch-tags: 'true'
